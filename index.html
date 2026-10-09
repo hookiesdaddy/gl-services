@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,600;0,800;1,700;1,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=3">
+  <link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
 
@@ -246,10 +246,8 @@
           to.style.viewTransitionName = 'svc-title';
           show(id);
         });
-        t.finished.finally(function () {
-          to.style.viewTransitionName = '';
-          root.classList.remove('vt');
-        });
+        // Leave .vt on: removing it would restart the views' CSS fade-in and cause a pop
+        t.finished.finally(function () { to.style.viewTransitionName = ''; });
       }
       window.addEventListener('hashchange', route);
       route();
