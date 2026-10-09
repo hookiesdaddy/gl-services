@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>GL Services | Pressure Washing, Trash Bin Cleaning & Golf Cart Detailing</title>
   <meta name="description" content="GL Services offers pressure washing, trash bin cleaning, and golf cart detailing in Franklin, Spring Hill, and surrounding areas. Text 615-512-4502 for a free quote.">
-  <meta name="theme-color" content="#143495">
+  <meta name="theme-color" content="#0f2a85">
   <link rel="icon" href="assets/logo.png">
   <meta property="og:title" content="GL Services">
-  <meta property="og:description" content="Pressure washing, trash bin cleaning & golf cart detailing. Text 615-512-4502 for a free quote.">
+  <meta property="og:description" content="Pressure washing, trash bin cleaning & golf cart detailing in Franklin & Spring Hill. Text 615-512-4502 for a free quote.">
   <meta property="og:image" content="assets/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,58 +17,120 @@
 </head>
 <body>
 
-  <header class="site-header">
-    <div class="wrap header-inner">
+  <!-- Blue band: header + the current page's heading -->
+  <div class="band">
+    <div class="band-lines" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+
+    <header class="wrap header-inner">
       <a href="#" class="brand" aria-label="GL Services home">
-        <img src="assets/logo.png" alt="GL Services" width="475" height="242">
+        <img src="assets/logo-white.png" alt="GL Services" width="475" height="242">
       </a>
-      <a class="btn btn-ghost btn-sm" href="tel:+16155124502">
+      <a class="btn btn-outline-light btn-sm" href="tel:+16155124502">
         <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>
         <span>615-512-4502</span>
       </a>
+    </header>
+
+    <div class="wrap band-head">
+      <div class="head head-home" data-view="home">
+        <p class="eyebrow">Franklin · Spring Hill · Surrounding areas</p>
+        <h1 class="title">What can we<br>clean for you?</h1>
+        <p class="sub">Pick a service to see pricing. Booking takes one text.</p>
+      </div>
+      <div class="head" data-view="pressure-washing" hidden>
+        <a class="back" href="#">← All services</a>
+        <h1 class="title">Pressure Washing</h1>
+        <p class="sub">Blast away years of dirt, mildew, and grime. Your property will look new again.</p>
+      </div>
+      <div class="head" data-view="trash-bins" hidden>
+        <a class="back" href="#">← All services</a>
+        <h1 class="title">Trash Bin Cleaning</h1>
+        <p class="sub">No more stink, bugs, or sticky gunk. We wash, scrub, and sanitize your cans right at the curb.</p>
+      </div>
+      <div class="head" data-view="golf-carts" hidden>
+        <a class="back" href="#">← All services</a>
+        <h1 class="title">Golf Cart Detailing</h1>
+        <p class="sub">Bring back that showroom shine, from the seats to the tires.</p>
+      </div>
     </div>
-  </header>
+  </div>
 
   <main class="wrap">
 
     <!-- HOME: three tiles -->
     <section class="view" data-view="home">
-      <h1 class="title">What can we clean for you?</h1>
       <div class="tiles">
         <a class="tile" href="#pressure-washing">
-          <span class="tile-icon">
-            <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 14h18l4 4h6v6h-6l-4 4H8z" class="fill"/><path d="M36 21h4M36 18l5-3M36 24l5 3" class="stroke"/><path d="M12 28v10M18 28v6" class="stroke"/></svg>
+          <span class="tile-art" aria-hidden="true">
+            <svg viewBox="0 0 64 64">
+              <path class="ink" d="M6 26h20a3 3 0 0 1 3 3v3a3 3 0 0 1-3 3h-8l-3 13a2 2 0 0 1-2 1.6H9.5a1.5 1.5 0 0 1-1.5-1.8L10.6 35H6a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2z"/>
+              <path class="blue" d="M16 35h4l-1 4.5h-4z"/>
+              <rect class="blue" x="29" y="28.5" width="16" height="4" rx="1.5"/>
+              <path class="spray" d="M47 30.5 60 21M47 30.5h14M47 30.5 60 40"/>
+              <circle class="drop" cx="55" cy="16" r="1.8"/><circle class="drop" cx="58" cy="46" r="1.8"/><circle class="drop" cx="52" cy="36.5" r="1.3"/><circle class="drop" cx="52" cy="25" r="1.3"/>
+            </svg>
           </span>
-          <span class="tile-text"><span class="tile-name">Pressure Washing</span><span class="tile-price">Free quote</span></span>
-          <span class="tile-arrow" aria-hidden="true">→</span>
+          <span class="tile-body">
+            <span class="tile-name">Pressure Washing</span>
+            <span class="tile-meta"><span class="pill">Free quote</span><span class="tile-cta">See details <i aria-hidden="true">→</i></span></span>
+          </span>
         </a>
+
         <a class="tile" href="#trash-bins">
-          <span class="tile-icon">
-            <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M12 14h24l-3 26H15z" class="fill"/><path d="M9 14h30M19 9h10" class="stroke"/><path d="M20 20v14M28 20v14" class="stroke light"/></svg>
+          <span class="tile-art" aria-hidden="true">
+            <svg viewBox="0 0 64 64">
+              <rect class="ink" x="13" y="14" width="34" height="6" rx="2"/>
+              <path class="ink" d="M25 14v-3a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v3h-3v-2h-4v2z"/>
+              <path class="blue" d="M15 22h30l-3 31a3 3 0 0 1-3 2.7H21a3 3 0 0 1-3-2.7z"/>
+              <path class="rib" d="M24 28l1 20M30 28v20M36 28l-1 20"/>
+              <path class="spark" d="M53 12v8M49 16h8M55 31v5M52.5 33.5h5"/>
+            </svg>
           </span>
-          <span class="tile-text"><span class="tile-name">Trash Bin Cleaning</span><span class="tile-price">From $20</span></span>
-          <span class="tile-arrow" aria-hidden="true">→</span>
+          <span class="tile-body">
+            <span class="tile-name">Trash Bin Cleaning</span>
+            <span class="tile-meta"><span class="pill">From $20</span><span class="tile-cta">See pricing <i aria-hidden="true">→</i></span></span>
+          </span>
         </a>
+
         <a class="tile" href="#golf-carts">
-          <span class="tile-icon">
-            <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M10 12h28" class="stroke"/><path d="M14 12v12M34 12v12" class="stroke"/><path d="M8 24h32v8H8z" class="fill"/><circle cx="15" cy="36" r="4" class="fill"/><circle cx="33" cy="36" r="4" class="fill"/></svg>
+          <span class="tile-art" aria-hidden="true">
+            <svg viewBox="0 0 64 64">
+              <path class="ink" d="M10 12h40a2 2 0 0 1 0 4H10a2 2 0 0 1 0-4z"/>
+              <path class="post" d="M15 16v18M46 16l2 18"/>
+              <path class="ink" d="M20 26h12a3 3 0 0 1 3 3v5H20z"/>
+              <path class="blue" d="M7 34h48a3 3 0 0 1 3 3v6a2 2 0 0 1-2 2H8a3 3 0 0 1-3-3v-6a2 2 0 0 1 2-2z"/>
+              <circle class="ink" cx="17" cy="47" r="6"/><circle class="hub" cx="17" cy="47" r="2.2"/>
+              <circle class="ink" cx="47" cy="47" r="6"/><circle class="hub" cx="47" cy="47" r="2.2"/>
+            </svg>
           </span>
-          <span class="tile-text"><span class="tile-name">Golf Cart Detailing</span><span class="tile-price">From $50</span></span>
-          <span class="tile-arrow" aria-hidden="true">→</span>
+          <span class="tile-body">
+            <span class="tile-name">Golf Cart Detailing</span>
+            <span class="tile-meta"><span class="pill">From $50</span><span class="tile-cta">See packages <i aria-hidden="true">→</i></span></span>
+          </span>
         </a>
       </div>
-      <p class="home-note">Locally owned · Serving Franklin, Spring Hill &amp; surrounding areas<br>Text or call <a href="tel:+16155124502">615-512-4502</a></p>
+
+      <ul class="trust">
+        <li>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11 12 4l9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>
+          <span><strong>Locally owned</strong> &amp; operated</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 1 7 7c0 5-7 13-7 13S5 14 5 9a7 7 0 0 1 7-7zm0 4.5A2.5 2.5 0 1 0 12 11.5 2.5 2.5 0 0 0 12 6.5z"/></svg>
+          <span><strong>Franklin &amp; Spring Hill</strong> and nearby</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1H9l-5 4v-4H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/></svg>
+          <span><strong>Book by text</strong> · <a href="sms:+16155124502">615-512-4502</a></span>
+        </li>
+      </ul>
     </section>
 
     <!-- PRESSURE WASHING -->
     <section class="view detail" data-view="pressure-washing" hidden>
-      <a class="back" href="#">← All services</a>
-      <h1 class="title">Pressure Washing</h1>
-      <p class="lede">Blast away years of dirt, mildew, and grime. Your property will look new again.</p>
-
-      <div class="panel panel-dark">
+      <div class="panel">
         <p class="big-price">Free quote</p>
-        <p>Every job is different, so pricing depends on how big it is and how long it takes. Text a photo of the area and you'll get a price quickly.</p>
+        <p class="panel-text">Every job is different, so pricing depends on how big it is and how long it takes. Text a photo of the area and you'll get a price quickly.</p>
         <ol class="mini-steps">
           <li>Snap a photo</li>
           <li>Text it over</li>
@@ -92,10 +154,6 @@
 
     <!-- TRASH BINS -->
     <section class="view detail" data-view="trash-bins" hidden>
-      <a class="back" href="#">← All services</a>
-      <h1 class="title">Trash Bin Cleaning</h1>
-      <p class="lede">No more stink, bugs, or sticky gunk. We wash, scrub, and sanitize your cans right at the curb.</p>
-
       <div class="panel">
         <ul class="price-rows">
           <li><span>1 bin</span><strong>$20</strong></li>
@@ -128,10 +186,6 @@
 
     <!-- GOLF CARTS -->
     <section class="view detail" data-view="golf-carts" hidden>
-      <a class="back" href="#">← All services</a>
-      <h1 class="title">Golf Cart Detailing</h1>
-      <p class="lede">Bring back that showroom shine. We clean everything from the roof to the tires.</p>
-
       <div class="tiers">
         <div class="tier">
           <div class="tier-top"><span>Basic</span><strong>$50</strong></div>
@@ -162,6 +216,7 @@
   </main>
 
   <footer class="site-footer">
+    <img src="assets/logo.png" alt="" class="footer-logo" width="475" height="242">
     <p>© <span data-year>2026</span> GL Services · <a href="tel:+16155124502">615-512-4502</a></p>
   </footer>
 
@@ -173,6 +228,7 @@
         var id = location.hash.slice(1) || 'home';
         if (!document.querySelector('[data-view="' + id + '"]')) id = 'home';
         views.forEach(function (v) { v.hidden = v.dataset.view !== id; });
+        document.body.dataset.route = id === 'home' ? 'home' : 'detail';
         window.scrollTo(0, 0);
       }
       window.addEventListener('hashchange', route);
