@@ -224,6 +224,7 @@ body[data-route="detail"] main { margin-top: -70px; }
 }
 
 /* ---------- Page transitions (View Transitions API) ---------- */
+.band { view-transition-name: band; }
 .header-inner { view-transition-name: site-header; }
 .band-head { view-transition-name: page-head; }
 main { view-transition-name: page-body; }
@@ -231,6 +232,10 @@ html.vt .view { animation: none; }
 
 ::view-transition-group(*) { animation-duration: .5s; animation-timing-function: cubic-bezier(.22, .8, .24, 1); }
 ::view-transition-old(root), ::view-transition-new(root) { animation-duration: .35s; }
+
+/* blue band: one shape that stretches smoothly to its new height (no crossfade) */
+::view-transition-old(band) { display: none; }
+::view-transition-new(band) { animation: none; height: 100%; }
 
 /* header stays put */
 ::view-transition-old(site-header) { display: none; }
