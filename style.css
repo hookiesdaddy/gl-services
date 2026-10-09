@@ -208,6 +208,17 @@ body[data-route="detail"] main { margin-top: -70px; }
   .btn-sm { padding: 10px; }
 }
 
+@media (max-width: 380px) {
+  .title { font-size: 34px; }
+  .title br { display: none; }
+  .tile-art { width: 86px; }
+  .tile-art svg { width: 58px; height: 58px; }
+  .tile-body { padding: 16px 14px; }
+  .tile-name { font-size: 19px; }
+  .pill { font-size: 13px; padding: 7px 10px; }
+}
+.pill { white-space: nowrap; }
+
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; animation: none !important; }
 }
