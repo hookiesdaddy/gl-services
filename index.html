@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>GL Services | Pressure Washing, Trash Bin Cleaning & Golf Cart Detailing</title>
   <meta name="description" content="GL Services offers pressure washing, trash bin cleaning, and golf cart detailing in Franklin, Spring Hill, and surrounding areas. Text 615-512-4502 for a free quote.">
-  <meta name="theme-color" content="#0f2a85">
+  <meta name="theme-color" content="#0f2a85" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#071340" media="(prefers-color-scheme: dark)">
+  <meta name="color-scheme" content="light dark">
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
   <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png">
@@ -16,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,600;0,800;1,700;1,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=6">
+  <link rel="stylesheet" href="style.css?v=7">
 </head>
 <body>
 
@@ -204,7 +206,10 @@
   </main>
 
   <footer class="site-footer">
-    <img src="assets/logo.png" alt="" class="footer-logo" width="475" height="242">
+    <picture>
+      <source srcset="assets/logo-white.png" media="(prefers-color-scheme: dark)">
+      <img src="assets/logo.png" alt="" class="footer-logo" width="475" height="242">
+    </picture>
     <p>© <span data-year>2026</span> GL Services · <a href="tel:+16155124502">615-512-4502</a></p>
   </footer>
 
