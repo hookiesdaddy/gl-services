@@ -124,7 +124,7 @@ body[data-route="detail"] main { margin-top: -70px; }
 .tile:hover .tile-arrow { transform: translateX(3px); background: var(--blue-bright); }
 
 .home-note { text-align: center; color: var(--muted); font-size: 15px; margin: 40px 0 0; }
-.home-note a { color: var(--blue); font-weight: 600; text-decoration: none; }
+.home-note a { white-space: nowrap; color: var(--blue); font-weight: 600; text-decoration: none; }
 
 /* ---------- Detail views ---------- */
 .detail { max-width: 680px; margin-inline: auto; }
