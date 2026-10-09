@@ -211,3 +211,42 @@ body[data-route="detail"] main { margin-top: -70px; }
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; animation: none !important; }
 }
+
+/* ---------- Page transitions (View Transitions API) ---------- */
+.header-inner { view-transition-name: site-header; }
+.band-head { view-transition-name: page-head; }
+main { view-transition-name: page-body; }
+html.vt .view { animation: none; }
+
+::view-transition-group(*) { animation-duration: .5s; animation-timing-function: cubic-bezier(.22, .8, .24, 1); }
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: .35s; }
+
+/* header stays put */
+::view-transition-old(site-header) { display: none; }
+::view-transition-new(site-header) { animation: none; }
+
+/* page content slides: forward = in from the right, back = in from the left */
+::view-transition-old(page-body), ::view-transition-old(page-head) { animation: .18s cubic-bezier(.4, 0, 1, 1) both vt-out; }
+::view-transition-new(page-body), ::view-transition-new(page-head) { animation: .48s cubic-bezier(.22, .8, .24, 1) .14s both vt-in; }
+::view-transition-old(page-head), ::view-transition-new(page-head) { --vt-dist: 24px; }
+html[data-dir="back"]::view-transition-old(page-body),
+html[data-dir="back"]::view-transition-old(page-head) { animation-name: vt-out-back; }
+html[data-dir="back"]::view-transition-new(page-body),
+html[data-dir="back"]::view-transition-new(page-head) { animation-name: vt-in-back; }
+
+@keyframes vt-out      { to   { opacity: 0; transform: translateX(calc(-.5 * var(--vt-dist, 48px))); } }
+@keyframes vt-in       { from { opacity: 0; transform: translateX(var(--vt-dist, 48px)); } }
+@keyframes vt-out-back { to   { opacity: 0; transform: translateX(calc(.5 * var(--vt-dist, 48px))); } }
+@keyframes vt-in-back  { from { opacity: 0; transform: translateX(calc(-1 * var(--vt-dist, 48px))); } }
+
+/* the morphing title */
+::view-transition-group(svc-title) { animation-duration: .55s; z-index: 2; }
+::view-transition-old(svc-title), ::view-transition-new(svc-title) { height: 100%; object-fit: contain; object-position: left center; }
+::view-transition-old(svc-title) { animation: .2s ease both vt-fade-out; }
+::view-transition-new(svc-title) { animation: .35s ease .12s both vt-fade-in; }
+@keyframes vt-fade-out { to { opacity: 0; } }
+@keyframes vt-fade-in { from { opacity: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
+}

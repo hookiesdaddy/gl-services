@@ -212,12 +212,44 @@
     (function () {
       // Show one view at a time based on the URL hash (#trash-bins etc.)
       var views = document.querySelectorAll('[data-view]');
-      function route() {
-        var id = location.hash.slice(1) || 'home';
-        if (!document.querySelector('[data-view="' + id + '"]')) id = 'home';
+      var root = document.documentElement;
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      var current = null;
+
+      function show(id) {
         views.forEach(function (v) { v.hidden = v.dataset.view !== id; });
         document.body.dataset.route = id === 'home' ? 'home' : 'detail';
         window.scrollTo(0, 0);
+      }
+
+      function route() {
+        var id = location.hash.slice(1) || 'home';
+        if (!document.querySelector('[data-view="' + id + '"]')) id = 'home';
+        if (id === current) return;
+        var prev = current;
+        current = id;
+
+        if (!prev || !document.startViewTransition || reduceMotion.matches) { show(id); return; }
+
+        // The tile's title morphs into the page title (and back again)
+        var service = id === 'home' ? prev : id;
+        var tileTitle = document.querySelector('.tile[href="#' + service + '"] .tile-name');
+        var pageTitle = document.querySelector('.head[data-view="' + service + '"] .title');
+        var from = id === 'home' ? pageTitle : tileTitle;
+        var to = id === 'home' ? tileTitle : pageTitle;
+
+        root.dataset.dir = id === 'home' ? 'back' : 'forward';
+        root.classList.add('vt');
+        from.style.viewTransitionName = 'svc-title';
+        var t = document.startViewTransition(function () {
+          from.style.viewTransitionName = '';
+          to.style.viewTransitionName = 'svc-title';
+          show(id);
+        });
+        t.finished.finally(function () {
+          to.style.viewTransitionName = '';
+          root.classList.remove('vt');
+        });
       }
       window.addEventListener('hashchange', route);
       route();
