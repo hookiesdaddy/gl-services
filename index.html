@@ -26,7 +26,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,600;0,800;1,700;1,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=7">
+  <link rel="stylesheet" href="style.css?v=9">
 </head>
 <body>
 
@@ -224,15 +224,68 @@
   <script>
     (function () {
       // Show one view at a time based on the URL hash (#trash-bins etc.)
+      // Page changes are animated on the live page (Web Animations API), not with View Transitions:
+      // iOS Safari leaves the area under its toolbar out of view-transition snapshots, so content there popped in.
       var views = document.querySelectorAll('[data-view]');
-      var root = document.documentElement;
+      var band = document.querySelector('.band');
       var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-      var current = null;
+      var EASE = 'cubic-bezier(.22, .8, .24, 1)';
+      var current = null, running = [], token = 0;
 
+      function $(sel) { return document.querySelector(sel); }
       function show(id) {
         views.forEach(function (v) { v.hidden = v.dataset.view !== id; });
         document.body.dataset.route = id === 'home' ? 'home' : 'detail';
         window.scrollTo(0, 0);
+      }
+      function stopRunning() { running.forEach(function (a) { a.cancel(); }); running = []; }
+      function anim(el, frames, opts) { var a = el.animate(frames, opts); running.push(a); return a; }
+
+      function transition(prev, id) {
+        var my = ++token;
+        var back = id === 'home', dir = back ? -1 : 1;
+        var service = back ? prev : id;
+        var tileTitle = $('.tile[href="#' + service + '"] .tile-name');
+        var pageTitle = $('.head[data-view="' + service + '"] .title');
+        var from = back ? pageTitle : tileTitle, to = back ? tileTitle : pageTitle;
+
+        // 1. Old page fades/slides out
+        var fromRect = from.getBoundingClientRect();
+        var fromSize = parseFloat(getComputedStyle(from).fontSize);
+        var h0 = band.offsetHeight;
+        var outs = Array.prototype.map.call(document.querySelectorAll('[data-view="' + prev + '"]'), function (el) {
+          return anim(el, [{ opacity: 1, transform: 'none' }, { opacity: 0, transform: 'translateX(' + (-24 * dir) + 'px)' }],
+            { duration: 180, easing: 'cubic-bezier(.4, 0, 1, 1)', fill: 'forwards' });
+        });
+
+        Promise.all(outs.map(function (a) { return a.finished; })).then(function () {
+          if (my !== token) return;
+          stopRunning();
+          show(id);
+
+          // Measure the final layout before starting any new animations
+          var h1 = band.offsetHeight;
+          var toRect = to.getBoundingClientRect();
+          var s = fromSize / parseFloat(getComputedStyle(to).fontSize);
+
+          // 2. Band smoothly changes height
+          anim(band, [{ height: h0 + 'px' }, { height: h1 + 'px' }], { duration: 450, easing: EASE });
+
+          // 3. Service title glides from where it was to where it lands (lifted above neighbouring tiles meanwhile)
+          to.style.position = 'relative'; to.style.zIndex = '10';
+          anim(to, [
+            { transformOrigin: '0 0', transform: 'translate(' + (fromRect.left - toRect.left) + 'px,' + (fromRect.top - toRect.top) + 'px) scale(' + s + ')', opacity: .3 },
+            { transformOrigin: '0 0', transform: 'none', opacity: 1 }
+          ], { duration: 520, easing: EASE }).finished.catch(function () {}).then(function () { to.style.position = to.style.zIndex = ''; });
+
+          // 4. Everything else in the new page slides in
+          var head = $('.head[data-view="' + id + '"]'), body = $('main [data-view="' + id + '"]');
+          var parts = Array.prototype.filter.call(head.children, function (c) { return c !== to; }).concat([body]);
+          parts.forEach(function (el) {
+            anim(el, [{ opacity: 0, transform: 'translateX(' + (40 * dir) + 'px)' }, { opacity: 1, transform: 'none' }],
+              { duration: 460, delay: 40, easing: EASE, fill: 'backwards' });
+          });
+        }).catch(function () {});
       }
 
       function route() {
@@ -241,29 +294,14 @@
         if (id === current) return;
         var prev = current;
         current = id;
-
-        if (!prev || !document.startViewTransition || reduceMotion.matches) { show(id); return; }
-
-        // The tile's title morphs into the page title (and back again)
-        var service = id === 'home' ? prev : id;
-        var tileTitle = document.querySelector('.tile[href="#' + service + '"] .tile-name');
-        var pageTitle = document.querySelector('.head[data-view="' + service + '"] .title');
-        var from = id === 'home' ? pageTitle : tileTitle;
-        var to = id === 'home' ? tileTitle : pageTitle;
-
-        root.dataset.dir = id === 'home' ? 'back' : 'forward';
-        root.classList.add('vt');
-        from.style.viewTransitionName = 'svc-title';
-        var t = document.startViewTransition(function () {
-          from.style.viewTransitionName = '';
-          to.style.viewTransitionName = 'svc-title';
-          show(id);
-        });
-        // Leave .vt on: removing it would restart the views' CSS fade-in and cause a pop
-        t.finished.finally(function () { to.style.viewTransitionName = ''; });
+        token++; stopRunning();
+        if (!prev || reduceMotion.matches || !Element.prototype.animate) { show(id); return; }
+        transition(prev, id);
       }
       window.addEventListener('hashchange', route);
       route();
+      // The CSS fade-in is only for the first load; after that, transition() handles motion
+      setTimeout(function () { document.documentElement.classList.add('ready'); }, 600);
 
       // Trash bin calculator: $20 for 1, $35 for 2, +$10 each after
       var calc = document.querySelector('[data-calc]');

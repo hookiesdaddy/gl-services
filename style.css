@@ -83,7 +83,7 @@ h1, h2 { font-family: var(--head); line-height: 1.02; margin: 0; }
   padding-bottom: 150px;
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 70px), 0 100%);
 }
-body[data-route="detail"] .band { padding-bottom: 110px; clip-path: polygon(0 0, 100% 0, 100% calc(100% - 50px), 0 100%); }
+body[data-route="detail"] .band { padding-bottom: 110px; }
 
 .header-inner { position: relative; display: flex; align-items: center; justify-content: space-between; height: 84px; }
 .brand img { height: 52px; width: auto; }
@@ -107,8 +107,7 @@ body[data-route="detail"] .band { padding-bottom: 110px; clip-path: polygon(0 0,
 .back:hover { background: rgba(255,255,255,.2); color: #fff; }
 
 /* ---------- Main (overlaps band) ---------- */
-/* main gets 40px of side/top padding so the tiles' shadows sit inside its box:
-   Safari's view-transition snapshot clips to the box, and clipped shadows popped back in at the end */
+/* main's padding gives the tiles' shadows room */
 main.wrap { flex: 1; position: relative; width: min(1160px, 100%); padding: 32px 40px 72px; margin-top: -142px; }
 body[data-route="detail"] main.wrap { margin-top: -102px; }
 .view { animation: enter .4s cubic-bezier(.2, .7, .2, 1) both; }
@@ -117,7 +116,7 @@ body[data-route="detail"] main.wrap { margin-top: -102px; }
 /* ---------- Tiles ---------- */
 .tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
 .tile {
-  display: flex; flex-direction: column; overflow: hidden; text-decoration: none;
+  display: flex; flex-direction: column; text-decoration: none;
   background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow);
   transition: transform .25s cubic-bezier(.2, .7, .2, 1), box-shadow .25s ease;
 }
@@ -126,6 +125,7 @@ body[data-route="detail"] main.wrap { margin-top: -102px; }
 
 .tile-art {
   position: relative; display: grid; place-items: center; height: 200px; overflow: hidden;
+  border-radius: var(--radius) var(--radius) 0 0;  /* tile itself doesn't clip, so the morphing title isn't cut off */
   background:
     linear-gradient(160deg, var(--art-a) 0%, var(--art-b) 100%);
 }
@@ -219,7 +219,7 @@ body[data-route="detail"] main.wrap { margin-top: -102px; }
 @media (max-width: 880px) {
   .tiles { grid-template-columns: 1fr; max-width: 540px; margin-inline: auto; gap: 16px; }
   .tile { flex-direction: row; align-items: stretch; }
-  .tile-art { width: 112px; height: auto; flex: none; }
+  .tile-art { width: 112px; height: auto; flex: none; border-radius: var(--radius) 0 0 var(--radius); }
   .tile-art svg { width: 72px; height: 72px; }
   .tile-body { flex: 1; gap: 12px; padding: 20px 18px; justify-content: center; }
   .tile-name { font-size: 22px; }
@@ -229,7 +229,7 @@ body[data-route="detail"] main.wrap { margin-top: -102px; }
   .header-inner { height: 70px; }
   .brand img { height: 42px; }
   .band { padding-bottom: 120px; clip-path: polygon(0 0, 100% 0, 100% calc(100% - 40px), 0 100%); }
-  body[data-route="detail"] .band { padding-bottom: 96px; clip-path: polygon(0 0, 100% 0, 100% calc(100% - 30px), 0 100%); }
+  body[data-route="detail"] .band { padding-bottom: 96px; }
   .band-head { padding-top: 20px; }
     .sub { font-size: 16.5px; }
   main.wrap { width: 100%; padding: 32px 16px 56px; margin-top: -120px; }
@@ -256,46 +256,4 @@ body[data-route="detail"] main.wrap { margin-top: -102px; }
   * { transition: none !important; animation: none !important; }
 }
 
-/* ---------- Page transitions (View Transitions API) ---------- */
-.band { view-transition-name: band; }
-.header-inner { view-transition-name: site-header; }
-.band-head { view-transition-name: page-head; }
-main { view-transition-name: page-body; }
-html.vt .view { animation: none; }
-
-::view-transition-group(*) { animation-duration: .5s; animation-timing-function: cubic-bezier(.22, .8, .24, 1); }
-::view-transition-old(root), ::view-transition-new(root) { animation-duration: .35s; }
-
-/* blue band: one shape that stretches smoothly to its new height (no crossfade) */
-::view-transition-old(band) { display: none; }
-::view-transition-new(band) { animation: none; height: 100%; }
-
-/* header stays put */
-::view-transition-old(site-header) { display: none; }
-::view-transition-new(site-header) { animation: none; }
-
-/* page content slides: forward = in from the right, back = in from the left */
-::view-transition-old(page-body), ::view-transition-old(page-head) { animation: .18s cubic-bezier(.4, 0, 1, 1) both vt-out; }
-::view-transition-new(page-body), ::view-transition-new(page-head) { animation: .48s cubic-bezier(.22, .8, .24, 1) .14s both vt-in; }
-::view-transition-old(page-head), ::view-transition-new(page-head) { --vt-dist: 24px; }
-html[data-dir="back"]::view-transition-old(page-body),
-html[data-dir="back"]::view-transition-old(page-head) { animation-name: vt-out-back; }
-html[data-dir="back"]::view-transition-new(page-body),
-html[data-dir="back"]::view-transition-new(page-head) { animation-name: vt-in-back; }
-
-@keyframes vt-out      { to   { opacity: 0; transform: translateX(calc(-.5 * var(--vt-dist, 48px))); } }
-@keyframes vt-in       { from { opacity: 0; transform: translateX(var(--vt-dist, 48px)); } }
-@keyframes vt-out-back { to   { opacity: 0; transform: translateX(calc(.5 * var(--vt-dist, 48px))); } }
-@keyframes vt-in-back  { from { opacity: 0; transform: translateX(calc(-1 * var(--vt-dist, 48px))); } }
-
-/* the morphing title */
-::view-transition-group(svc-title) { animation-duration: .55s; z-index: 2; }
-::view-transition-old(svc-title), ::view-transition-new(svc-title) { height: 100%; object-fit: contain; object-position: left center; }
-::view-transition-old(svc-title) { animation: .2s ease both vt-fade-out; }
-::view-transition-new(svc-title) { animation: .35s ease .12s both vt-fade-in; }
-@keyframes vt-fade-out { to { opacity: 0; } }
-@keyframes vt-fade-in { from { opacity: 0; } }
-
-@media (prefers-reduced-motion: reduce) {
-  ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
-}
+html.ready .view { animation: none; }
