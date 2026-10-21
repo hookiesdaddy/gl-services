@@ -138,7 +138,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,600;0,800;1,700;1,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=24">
+  <link rel="stylesheet" href="style.css?v=26">
 </head>
 <body>
 
@@ -572,6 +572,26 @@
         <li>Done right at your curb</li>
       </ul>
 
+      <h2 class="label">Before &amp; after</h2>
+      <div class="ba-list" tabindex="0" aria-label="Before and after photos (scroll sideways for more)">
+        <figure class="ba">
+          <div class="ba-img"><img src="assets/work/bin-1-before.jpg" alt="Gray trash bin before cleaning, with grime and debris" width="360" height="480" decoding="async"><span>Before</span></div>
+          <div class="ba-img after"><img src="assets/work/bin-1-after.jpg" alt="The same gray trash bin after cleaning" width="360" height="480" decoding="async"><span>After</span></div>
+        </figure>
+        <figure class="ba">
+          <div class="ba-img"><img src="assets/work/bin-2-before.jpg" alt="Blue trash bin before cleaning, with grime and debris" width="360" height="480" decoding="async"><span>Before</span></div>
+          <div class="ba-img after"><img src="assets/work/bin-2-after.jpg" alt="The same blue trash bin after cleaning" width="360" height="480" decoding="async"><span>After</span></div>
+        </figure>
+        <figure class="ba">
+          <div class="ba-img"><img src="assets/work/bin-3-before.jpg" alt="Tan trash bin before cleaning, with grime and debris" width="360" height="480" decoding="async"><span>Before</span></div>
+          <div class="ba-img after"><img src="assets/work/bin-3-after.jpg" alt="The same tan trash bin after cleaning" width="360" height="480" decoding="async"><span>After</span></div>
+        </figure>
+      </div>
+      <div class="ba-nav">
+        <button type="button" data-ba="-1" aria-label="Previous photos">←</button>
+        <button type="button" data-ba="1" aria-label="More photos">→</button>
+      </div>
+
       <div class="actions">
         <a class="btn btn-primary btn-lg" data-bin-link href="sms:+16155124502?&body=Hi%20GL%20Services!%20I'd%20like%20to%20book%20a%20trash%20bin%20cleaning.">Text to Book</a>
         <a class="btn btn-ghost btn-lg" href="tel:+16155124502">Call</a>
@@ -707,6 +727,15 @@
       route();
       // The CSS fade-in is only for the first load; after that, transition() handles motion
       setTimeout(function () { document.documentElement.classList.add('ready'); }, 600);
+
+      // Before/after strip: arrow buttons scroll one pair at a time
+      var baList = document.querySelector('.ba-list');
+      document.querySelectorAll('[data-ba]').forEach(function (b) {
+        b.addEventListener('click', function () {
+          var step = baList.querySelector('.ba').getBoundingClientRect().width + 14;
+          baList.scrollBy({ left: step * Number(b.dataset.ba), behavior: reduceMotion.matches ? 'auto' : 'smooth' });
+        });
+      });
 
       // Trash bin calculator: $20 for 1, $35 for 2, +$10 each after; subscriptions $5 off every cleaning
       var calc = document.querySelector('[data-calc]');
