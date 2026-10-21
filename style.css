@@ -215,6 +215,14 @@ body[data-route="detail"] main.wrap { margin-top: -102px; }
 /* Footer */
 .site-footer { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 8px 0 36px; color: var(--muted); font-size: 14px; }
 .site-footer p { margin: 0; }
+.social { display: flex; gap: 10px; margin-bottom: 4px; }
+.social a {
+  display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: 999px;
+  border: 1.5px solid var(--line-strong); color: var(--ink) !important; font-weight: 600; font-size: 14px;
+  transition: border-color .15s ease, color .15s ease;
+}
+.social a:hover { border-color: var(--accent); color: var(--accent) !important; }
+.social svg { width: 18px; height: 18px; }
 .site-footer a { color: var(--accent); font-weight: 600; text-decoration: none; }
 
 /* ---------- Responsive ---------- */
