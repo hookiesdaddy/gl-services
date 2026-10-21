@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>GL Services | Pressure Washing, Trash Bin Cleaning & Golf Cart Detailing</title>
-  <meta name="description" content="GL Services offers pressure washing, trash bin cleaning, and golf cart detailing in Franklin, Spring Hill, and surrounding areas. Text 615-512-4502 for a free quote.">
+  <title>GL Services | Pressure Washing &amp; Outdoor Cleaning in Franklin, TN</title>
+  <meta name="description" content="GL Services offers pressure washing, outdoor kitchen and patio furniture cleaning, golf cart detailing, and trash bin cleaning in Franklin, Spring Hill, and surrounding areas. Text 615-512-4502 for a free quote.">
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#e4e8f1" media="(prefers-color-scheme: dark)">
   <meta name="color-scheme" content="light dark">
@@ -17,7 +17,7 @@
   <meta property="og:url" content="https://glservicestn.com/">
   <meta property="og:site_name" content="GL Services">
   <meta property="og:title" content="GL Services">
-  <meta property="og:description" content="Pressure washing, golf cart detailing & trash bin cleaning in Franklin & Spring Hill. Text 615-512-4502 for a free quote.">
+  <meta property="og:description" content="Pressure washing, outdoor kitchen & furniture cleaning, golf carts and trash bins in Franklin & Spring Hill. Text 615-512-4502 for a free quote.">
   <meta property="og:image" content="https://glservicestn.com/assets/og-4.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -33,7 +33,7 @@
   "logo": "https://glservicestn.com/assets/logo.png",
   "image": "https://glservicestn.com/assets/og-4.png",
   "telephone": "+1-615-512-4502",
-  "description": "Pressure washing, golf cart detailing and trash bin cleaning in Franklin, Spring Hill and surrounding areas of Tennessee.",
+  "description": "Pressure washing, outdoor kitchen and patio furniture cleaning, golf cart detailing and trash bin cleaning in Franklin, Spring Hill and surrounding areas of Tennessee.",
   "priceRange": "$",
   "areaServed": [
     {
@@ -63,6 +63,22 @@
           "@type": "Service",
           "name": "Pressure Washing",
           "description": "Driveways, sidewalks, patios, decks, siding and fences. Priced by quote."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Outdoor Kitchen Cleaning",
+          "description": "Grill deep clean, countertops, cabinets, sink and stone or tile surfaces. Priced by quote."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Outdoor Furniture Cleaning",
+          "description": "Patio furniture of any material, including cushions. Priced by quote."
         }
       },
       {
@@ -100,7 +116,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,600;0,800;1,700;1,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=12">
+  <link rel="stylesheet" href="style.css?v=13">
 </head>
 <body>
 
@@ -130,6 +146,16 @@
         <h1 class="title">Pressure Washing</h1>
         <p class="sub">Blast away years of dirt, mildew, and grime. Your property will look new again.</p>
       </div>
+      <div class="head" data-view="outdoor-kitchens" hidden>
+        <a class="back" href="#">← All services</a>
+        <h1 class="title">Outdoor Kitchens</h1>
+        <p class="sub">Grease, grime, and pollen gone. Get your outdoor kitchen ready for the next cookout.</p>
+      </div>
+      <div class="head" data-view="outdoor-furniture" hidden>
+        <a class="back" href="#">← All services</a>
+        <h1 class="title">Outdoor Furniture</h1>
+        <p class="sub">Faded, dirty, or mildewed patio furniture and cushions, cleaned up and ready to use again.</p>
+      </div>
       <div class="head" data-view="trash-bins" hidden>
         <a class="back" href="#">← All services</a>
         <h1 class="title">Trash Bin Cleaning</h1>
@@ -145,7 +171,7 @@
 
   <main class="wrap">
 
-    <!-- HOME: three tiles -->
+    <!-- HOME: service tiles -->
     <section class="view" data-view="home">
       <div class="tiles">
         <a class="tile" href="#pressure-washing">
@@ -160,6 +186,39 @@
           </span>
           <span class="tile-body">
             <span class="tile-name">Pressure Washing</span>
+            <span class="tile-meta"><span class="pill">Free quote</span><span class="tile-arrow" aria-hidden="true">→</span></span>
+          </span>
+        </a>
+
+        <a class="tile" href="#outdoor-kitchens">
+          <span class="tile-art" aria-hidden="true">
+            <svg viewBox="0 0 64 64">
+              <path class="spray" d="M24 13c2.5-2.5-2.5-4.5 0-7M32 13c2.5-2.5-2.5-4.5 0-7M40 13c2.5-2.5-2.5-4.5 0-7"/>
+              <rect class="ink" x="26" y="16" width="12" height="3.5" rx="1.75"/>
+              <path class="blue" d="M9 33c0-9 10.5-14 23-14s23 5 23 14z"/>
+              <rect class="ink" x="6" y="33" width="52" height="6" rx="2"/>
+              <path class="post" d="M15 39l-3 15M49 39l3 15M14 47h36"/>
+              <circle class="ink" cx="12" cy="55.5" r="3"/><circle class="ink" cx="52" cy="55.5" r="3"/>
+            </svg>
+          </span>
+          <span class="tile-body">
+            <span class="tile-name">Outdoor Kitchens</span>
+            <span class="tile-meta"><span class="pill">Free quote</span><span class="tile-arrow" aria-hidden="true">→</span></span>
+          </span>
+        </a>
+
+        <a class="tile" href="#outdoor-furniture">
+          <span class="tile-art" aria-hidden="true">
+            <svg viewBox="0 0 64 64">
+              <path class="blue" d="M5 23 32 8l27 15c-4.5-2.5-9-2.5-13.5 0-4.5-2.5-9-2.5-13.5 0-4.5-2.5-9-2.5-13.5 0-4.5-2.5-9-2.5-13.5 0z"/>
+              <path class="post" d="M32 21v25"/>
+              <rect class="ink" x="13" y="36" width="38" height="5" rx="2.5"/>
+              <path class="post" d="M19 41l-3 14M45 41l3 14"/>
+              <path class="spark" d="M8 34v6M5 37h6M56 30v6M53 33h6"/>
+            </svg>
+          </span>
+          <span class="tile-body">
+            <span class="tile-name">Outdoor Furniture</span>
             <span class="tile-meta"><span class="pill">Free quote</span><span class="tile-arrow" aria-hidden="true">→</span></span>
           </span>
         </a>
@@ -223,6 +282,56 @@
 
       <div class="actions">
         <a class="btn btn-primary btn-lg" href="sms:+16155124502?&body=Hi%20GL%20Services!%20I'd%20like%20a%20pressure%20washing%20quote.%20Here's%20a%20photo%20of%20the%20area%3A">Text for a Quote</a>
+        <a class="btn btn-ghost btn-lg" href="tel:+16155124502">Call</a>
+      </div>
+    </section>
+
+    <!-- OUTDOOR KITCHENS -->
+    <section class="view detail" data-view="outdoor-kitchens" hidden>
+      <div class="panel">
+        <p class="big-price">Free quote</p>
+        <p class="panel-text">Every setup is different. Text photos of everything you'd like cleaned, and let us know about anything you don't want touched. You'll get a price quickly.</p>
+        <ol class="mini-steps">
+          <li>Snap photos</li>
+          <li>Text them over</li>
+          <li>Get your price</li>
+        </ol>
+      </div>
+
+      <h2 class="label">We clean</h2>
+      <ul class="ticks">
+        <li>Grill deep clean: grates, burners &amp; inside degreased</li>
+        <li>Countertops, stone &amp; tile surfaces</li>
+        <li>Cabinets &amp; sink</li>
+      </ul>
+
+      <div class="actions">
+        <a class="btn btn-primary btn-lg" href="sms:+16155124502?&body=Hi%20GL%20Services%21%20I%27d%20like%20an%20outdoor%20kitchen%20cleaning%20quote.%20Here%20are%20photos%20%28and%20anything%20you%20shouldn%27t%20touch%29%3A">Text for a Quote</a>
+        <a class="btn btn-ghost btn-lg" href="tel:+16155124502">Call</a>
+      </div>
+    </section>
+
+    <!-- OUTDOOR FURNITURE -->
+    <section class="view detail" data-view="outdoor-furniture" hidden>
+      <div class="panel">
+        <p class="big-price">Free quote</p>
+        <p class="panel-text">Every setup is different. Text photos of everything you'd like cleaned, and let us know about anything you don't want touched. You'll get a price quickly.</p>
+        <ol class="mini-steps">
+          <li>Snap photos</li>
+          <li>Text them over</li>
+          <li>Get your price</li>
+        </ol>
+      </div>
+
+      <h2 class="label">We clean</h2>
+      <ul class="ticks">
+        <li>Tables, chairs, loungers &amp; sofas</li>
+        <li>Wicker, metal, wood &amp; teak, and plastic</li>
+        <li>Cushions included</li>
+      </ul>
+
+      <div class="actions">
+        <a class="btn btn-primary btn-lg" href="sms:+16155124502?&body=Hi%20GL%20Services%21%20I%27d%20like%20an%20outdoor%20furniture%20cleaning%20quote.%20Here%20are%20photos%20%28and%20anything%20you%20shouldn%27t%20touch%29%3A">Text for a Quote</a>
         <a class="btn btn-ghost btn-lg" href="tel:+16155124502">Call</a>
       </div>
     </section>

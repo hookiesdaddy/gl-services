@@ -117,7 +117,9 @@ body[data-route="detail"] main.wrap { margin-top: -102px; }
 @keyframes enter { from { opacity: 0; transform: translateY(14px); } }
 
 /* ---------- Tiles ---------- */
-.tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.tiles { display: grid; grid-template-columns: repeat(6, 1fr); gap: 22px; }
+.tiles .tile { grid-column: span 2; }
+.tiles .tile:nth-child(n+4) { grid-column: span 3; }  /* 5 tiles: three on top, two wider below */
 .tile {
   display: flex; flex-direction: column; text-decoration: none;
   background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow);
@@ -220,6 +222,7 @@ body[data-route="detail"] main.wrap { margin-top: -102px; }
 /* ---------- Responsive ---------- */
 @media (max-width: 880px) {
   .tiles { grid-template-columns: 1fr; max-width: 540px; margin-inline: auto; gap: 16px; }
+  .tiles .tile, .tiles .tile:nth-child(n+4) { grid-column: auto; }
   .tile { flex-direction: row; align-items: stretch; }
   .tile-art { width: 112px; height: auto; flex: none; border-radius: var(--radius) 0 0 var(--radius); }
   .tile-art svg { width: 72px; height: 72px; }
