@@ -260,28 +260,55 @@ body[data-route="detail"] main.wrap { margin-top: -102px; }
 }
 .was { color: var(--muted); font: 600 18px/1 var(--body); margin-right: 8px; }
 
-/* Before & after photos: swipeable strip, next pair peeks in from the right */
+/* Before & after: tap a card to wipe the "after" photo across the "before" one */
 .ba-list {
-  display: grid; grid-auto-flow: column; grid-auto-columns: 86%; gap: 14px;
+  display: grid; grid-auto-flow: column; grid-auto-columns: min(300px, 78%); gap: 14px;
   overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain;
   padding: 4px 2px 14px; margin: 0 -2px; scrollbar-width: none;
 }
 .ba-list::-webkit-scrollbar { display: none; }
-.ba { margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; scroll-snap-align: start; }
-.ba-img { position: relative; aspect-ratio: 3 / 4; border-radius: 16px; overflow: hidden; background: var(--blue-soft); box-shadow: var(--shadow); }
-.ba-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.ba-img span {
-  position: absolute; top: 10px; left: 10px; padding: 5px 9px; border-radius: 999px;
-  font: 700 11px/1 var(--body); letter-spacing: .1em; text-transform: uppercase; color: #fff; background: rgba(15, 18, 24, .72);
-  border: 1.5px solid rgba(255, 255, 255, .75);
+.ba-card {
+  position: relative; display: block; padding: 0; border: 0; cursor: pointer; scroll-snap-align: start;
+  aspect-ratio: 3 / 4; border-radius: 18px; overflow: hidden; background: var(--blue-soft); box-shadow: var(--shadow);
+  -webkit-tap-highlight-color: transparent;
 }
-.ba-img.after span { background: var(--blue); }
-.ba-nav { display: flex; justify-content: flex-end; gap: 8px; margin-top: 2px; }
+.ba-card:focus-visible { outline: 3px solid var(--blue-bright); outline-offset: 3px; }
+.ba-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.ba-after { clip-path: inset(0 100% 0 0); transition: clip-path .9s cubic-bezier(.65, 0, .35, 1); }
+.ba-card[aria-pressed="true"] .ba-after { clip-path: inset(0 0 0 0); }
+/* the bright "squeegee" edge that leads the reveal */
+.ba-wipe {
+  position: absolute; top: 0; bottom: 0; left: 0; width: 4px; margin-left: -2px; opacity: 0; pointer-events: none;
+  background: #fff; box-shadow: 0 0 14px 4px rgba(255, 255, 255, .85), 0 0 3px 1px rgba(141, 177, 255, .9);
+}
+.ba-card[aria-pressed="true"] .ba-wipe { animation: ba-wipe .9s cubic-bezier(.65, 0, .35, 1); }
+@keyframes ba-wipe { 0% { left: 0; opacity: 1; } 88% { opacity: 1; } 100% { left: 100%; opacity: 0; } }
+.ba-tag, .ba-cue { position: absolute; display: grid; pointer-events: none; }
+.ba-tag > span, .ba-cue > span { grid-area: 1 / 1; transition: opacity .3s ease; }
+.ba-tag { top: 12px; left: 12px; }
+.ba-tag > span {
+  padding: 6px 10px; border-radius: 999px; border: 1.5px solid rgba(255, 255, 255, .75);
+  font: 700 11.5px/1 var(--body); letter-spacing: .1em; text-transform: uppercase; color: #fff;
+}
+.t-before { background: rgba(15, 18, 24, .72); }
+.t-after { background: var(--blue); opacity: 0; }
+.ba-cue { left: 50%; bottom: 14px; transform: translateX(-50%); }
+.ba-cue > span {
+  white-space: nowrap; padding: 8px 14px; border-radius: 999px; font: 600 13px/1 var(--body);
+  color: #0f1218; background: rgba(255, 255, 255, .92); box-shadow: 0 4px 14px rgba(0, 0, 0, .18);
+}
+.c-after { opacity: 0; }
+.ba-card[aria-pressed="true"] .t-before, .ba-card[aria-pressed="true"] .c-before { opacity: 0; }
+.ba-card[aria-pressed="true"] .t-after, .ba-card[aria-pressed="true"] .c-after { opacity: 1; transition-delay: .45s; }
+.ba-nav { display: flex; justify-content: flex-end; gap: 10px; margin-top: 2px; }
 .ba-nav button {
-  width: 38px; height: 38px; border-radius: 50%; cursor: pointer;
-  border: 1.5px solid var(--line-strong); background: var(--surface); color: var(--ink); font-size: 16px;
+  display: grid; place-items: center; width: 42px; height: 42px; padding: 0; border-radius: 50%; cursor: pointer;
+  border: 1.5px solid var(--line-strong); background: var(--surface); color: var(--ink);
+  transition: border-color .15s ease, color .15s ease, transform .15s ease;
 }
 .ba-nav button:hover { border-color: var(--accent); color: var(--accent); }
+.ba-nav button:active { transform: scale(.94); }
+.ba-nav svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
 
 /* Golf cart tiers */
 .tiers { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }

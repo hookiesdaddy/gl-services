@@ -138,7 +138,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,600;0,800;1,700;1,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=26">
+  <link rel="stylesheet" href="style.css?v=27">
 </head>
 <body>
 
@@ -574,22 +574,31 @@
 
       <h2 class="label">Before &amp; after</h2>
       <div class="ba-list" tabindex="0" aria-label="Before and after photos (scroll sideways for more)">
-        <figure class="ba">
-          <div class="ba-img"><img src="assets/work/bin-1-before.jpg" alt="Gray trash bin before cleaning, with grime and debris" width="360" height="480" decoding="async"><span>Before</span></div>
-          <div class="ba-img after"><img src="assets/work/bin-1-after.jpg" alt="The same gray trash bin after cleaning" width="360" height="480" decoding="async"><span>After</span></div>
-        </figure>
-        <figure class="ba">
-          <div class="ba-img"><img src="assets/work/bin-2-before.jpg" alt="Blue trash bin before cleaning, with grime and debris" width="360" height="480" decoding="async"><span>Before</span></div>
-          <div class="ba-img after"><img src="assets/work/bin-2-after.jpg" alt="The same blue trash bin after cleaning" width="360" height="480" decoding="async"><span>After</span></div>
-        </figure>
-        <figure class="ba">
-          <div class="ba-img"><img src="assets/work/bin-3-before.jpg" alt="Tan trash bin before cleaning, with grime and debris" width="360" height="480" decoding="async"><span>Before</span></div>
-          <div class="ba-img after"><img src="assets/work/bin-3-after.jpg" alt="The same tan trash bin after cleaning" width="360" height="480" decoding="async"><span>After</span></div>
-        </figure>
+        <button type="button" class="ba-card" aria-pressed="false" aria-label="Gray trash bin: tap to compare before and after">
+          <img class="ba-before" src="assets/work/bin-1-before.jpg" alt="Gray trash bin before cleaning, with grime and debris" width="360" height="480" decoding="async">
+          <img class="ba-after" src="assets/work/bin-1-after.jpg" alt="The same gray trash bin after cleaning" width="360" height="480" decoding="async">
+          <span class="ba-wipe" aria-hidden="true"></span>
+          <span class="ba-tag" aria-hidden="true"><span class="t-before">Before</span><span class="t-after">After</span></span>
+          <span class="ba-cue" aria-hidden="true"><span class="c-before">Tap to see after</span><span class="c-after">Tap to see before</span></span>
+        </button>
+        <button type="button" class="ba-card" aria-pressed="false" aria-label="Blue trash bin: tap to compare before and after">
+          <img class="ba-before" src="assets/work/bin-2-before.jpg" alt="Blue trash bin before cleaning, with grime and debris" width="360" height="480" decoding="async">
+          <img class="ba-after" src="assets/work/bin-2-after.jpg" alt="The same blue trash bin after cleaning" width="360" height="480" decoding="async">
+          <span class="ba-wipe" aria-hidden="true"></span>
+          <span class="ba-tag" aria-hidden="true"><span class="t-before">Before</span><span class="t-after">After</span></span>
+          <span class="ba-cue" aria-hidden="true"><span class="c-before">Tap to see after</span><span class="c-after">Tap to see before</span></span>
+        </button>
+        <button type="button" class="ba-card" aria-pressed="false" aria-label="Tan trash bin: tap to compare before and after">
+          <img class="ba-before" src="assets/work/bin-3-before.jpg" alt="Tan trash bin before cleaning, with grime and debris" width="360" height="480" decoding="async">
+          <img class="ba-after" src="assets/work/bin-3-after.jpg" alt="The same tan trash bin after cleaning" width="360" height="480" decoding="async">
+          <span class="ba-wipe" aria-hidden="true"></span>
+          <span class="ba-tag" aria-hidden="true"><span class="t-before">Before</span><span class="t-after">After</span></span>
+          <span class="ba-cue" aria-hidden="true"><span class="c-before">Tap to see after</span><span class="c-after">Tap to see before</span></span>
+        </button>
       </div>
       <div class="ba-nav">
-        <button type="button" data-ba="-1" aria-label="Previous photos">←</button>
-        <button type="button" data-ba="1" aria-label="More photos">→</button>
+        <button type="button" data-ba="-1" aria-label="Previous photos"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 6 8.5 12l6 6"/></svg></button>
+        <button type="button" data-ba="1" aria-label="More photos"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 6l6 6-6 6"/></svg></button>
       </div>
 
       <div class="actions">
@@ -732,8 +741,16 @@
       var baList = document.querySelector('.ba-list');
       document.querySelectorAll('[data-ba]').forEach(function (b) {
         b.addEventListener('click', function () {
-          var step = baList.querySelector('.ba').getBoundingClientRect().width + 14;
+          var step = baList.querySelector('.ba-card').getBoundingClientRect().width + 14;
           baList.scrollBy({ left: step * Number(b.dataset.ba), behavior: reduceMotion.matches ? 'auto' : 'smooth' });
+        });
+      });
+
+      // Tap a before photo to wipe the after photo across it (tap again to go back)
+      document.querySelectorAll('.ba-card').forEach(function (card) {
+        card.addEventListener('click', function () {
+          var on = card.getAttribute('aria-pressed') !== 'true';
+          card.setAttribute('aria-pressed', String(on));
         });
       });
 
