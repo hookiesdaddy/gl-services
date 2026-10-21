@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>GL Services | Pressure Washing &amp; Outdoor Cleaning in Franklin, TN</title>
-  <meta name="description" content="GL Services offers pressure washing, outdoor kitchen and patio furniture cleaning, golf cart detailing, and trash bin cleaning in Franklin, Spring Hill, and surrounding areas. Text 615-512-4502 for a free quote.">
+  <meta name="description" content="GL Services offers pressure washing, house washing, outdoor kitchen and patio furniture cleaning, golf cart detailing, and trash bin cleaning in Franklin, Spring Hill, and surrounding areas. Text 615-512-4502 for a free quote.">
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#e4e8f1" media="(prefers-color-scheme: dark)">
   <meta name="color-scheme" content="light dark">
@@ -17,7 +17,7 @@
   <meta property="og:url" content="https://glservicestn.com/">
   <meta property="og:site_name" content="GL Services">
   <meta property="og:title" content="GL Services">
-  <meta property="og:description" content="Pressure washing, outdoor kitchen & furniture cleaning, golf carts and trash bins in Franklin & Spring Hill. Text 615-512-4502 for a free quote.">
+  <meta property="og:description" content="Pressure washing, house washing, outdoor kitchen & furniture cleaning, golf carts and trash bins in Franklin & Spring Hill. Text 615-512-4502 for a free quote.">
   <meta property="og:image" content="https://glservicestn.com/assets/og-4.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -33,7 +33,7 @@
   "logo": "https://glservicestn.com/assets/logo.png",
   "image": "https://glservicestn.com/assets/og-4.png",
   "telephone": "+1-615-512-4502",
-  "description": "Pressure washing, outdoor kitchen and patio furniture cleaning, golf cart detailing and trash bin cleaning in Franklin, Spring Hill and surrounding areas of Tennessee.",
+  "description": "Pressure washing, house washing, outdoor kitchen and patio furniture cleaning, golf cart detailing and trash bin cleaning in Franklin, Spring Hill and surrounding areas of Tennessee.",
   "priceRange": "$",
   "areaServed": [
     {
@@ -62,7 +62,15 @@
         "itemOffered": {
           "@type": "Service",
           "name": "Pressure Washing",
-          "description": "Driveways, sidewalks, patios, decks, siding and fences. Priced by quote."
+          "description": "Driveways, sidewalks, patios, decks and fences. Priced by quote."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "House Washing",
+          "description": "Low-pressure exterior wash for siding, trim and soffits that removes dirt, mildew and algae. Priced by quote."
         }
       },
       {
@@ -116,7 +124,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,600;0,800;1,700;1,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=13">
+  <link rel="stylesheet" href="style.css?v=14">
 </head>
 <body>
 
@@ -145,6 +153,11 @@
         <a class="back" href="#">← All services</a>
         <h1 class="title">Pressure Washing</h1>
         <p class="sub">Blast away years of dirt, mildew, and grime. Your property will look new again.</p>
+      </div>
+      <div class="head" data-view="house-washing" hidden>
+        <a class="back" href="#">← All services</a>
+        <h1 class="title">House Washing</h1>
+        <p class="sub">Wash away dirt, mildew, and green algae and make your whole house look fresh again.</p>
       </div>
       <div class="head" data-view="outdoor-kitchens" hidden>
         <a class="back" href="#">← All services</a>
@@ -186,6 +199,23 @@
           </span>
           <span class="tile-body">
             <span class="tile-name">Pressure Washing</span>
+            <span class="tile-meta"><span class="pill">Free quote</span><span class="tile-arrow" aria-hidden="true">→</span></span>
+          </span>
+        </a>
+
+        <a class="tile" href="#house-washing">
+          <span class="tile-art" aria-hidden="true">
+            <svg viewBox="0 0 64 64">
+              <path class="ink" d="M4 30 30 9l26 21-3.2 3.8L30 15.6 7.2 33.8z"/>
+              <path class="blue" d="M10 31.5 30 15.6l20 15.9V54a2 2 0 0 1-2 2H12a2 2 0 0 1-2-2z"/>
+              <rect class="hub" x="25" y="40" width="10" height="16" rx="1"/>
+              <rect class="hub" x="15" y="35" width="7" height="7" rx="1"/><rect class="hub" x="38" y="35" width="7" height="7" rx="1"/>
+              <path class="spray" d="M58 10l-5 7M61 18l-6 4"/>
+              <circle class="drop" cx="57" cy="27" r="1.6"/><circle class="drop" cx="50" cy="9" r="1.4"/>
+            </svg>
+          </span>
+          <span class="tile-body">
+            <span class="tile-name">House Washing</span>
             <span class="tile-meta"><span class="pill">Free quote</span><span class="tile-arrow" aria-hidden="true">→</span></span>
           </span>
         </a>
@@ -277,11 +307,36 @@
       <ul class="ticks">
         <li>Driveways &amp; sidewalks</li>
         <li>Patios &amp; decks</li>
-        <li>House siding &amp; fences</li>
+        <li>Fences</li>
       </ul>
 
       <div class="actions">
         <a class="btn btn-primary btn-lg" href="sms:+16155124502?&body=Hi%20GL%20Services!%20I'd%20like%20a%20pressure%20washing%20quote.%20Here's%20a%20photo%20of%20the%20area%3A">Text for a Quote</a>
+        <a class="btn btn-ghost btn-lg" href="tel:+16155124502">Call</a>
+      </div>
+    </section>
+
+    <!-- HOUSE WASHING -->
+    <section class="view detail" data-view="house-washing" hidden>
+      <div class="panel">
+        <p class="big-price">Free quote</p>
+        <p class="panel-text">Pricing depends on the size of your home. Text a photo of each side of the house and you'll get a price quickly.</p>
+        <ol class="mini-steps">
+          <li>Snap photos</li>
+          <li>Text them over</li>
+          <li>Get your price</li>
+        </ol>
+      </div>
+
+      <h2 class="label">We clean</h2>
+      <ul class="ticks">
+        <li>Siding, trim &amp; soffits</li>
+        <li>Dirt, mildew &amp; green algae</li>
+        <li>Gentle low-pressure wash that's safe for your home</li>
+      </ul>
+
+      <div class="actions">
+        <a class="btn btn-primary btn-lg" href="sms:+16155124502?&body=Hi%20GL%20Services%21%20I%27d%20like%20a%20house%20washing%20quote.%20Here%20are%20photos%20of%20the%20house%3A">Text for a Quote</a>
         <a class="btn btn-ghost btn-lg" href="tel:+16155124502">Call</a>
       </div>
     </section>
