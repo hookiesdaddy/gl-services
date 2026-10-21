@@ -59,6 +59,16 @@
     "itemListElement": [
       {
         "@type": "Offer",
+        "name": "Curb Appeal Package",
+        "description": "House wash + driveway & sidewalk pressure washing in one visit, 15% off the total."
+      },
+      {
+        "@type": "Offer",
+        "name": "Backyard Refresh",
+        "description": "Outdoor kitchen + outdoor furniture + patio or deck pressure washing in one visit, 15% off the total."
+      },
+      {
+        "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
           "name": "Pressure Washing",
@@ -128,7 +138,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,600;0,800;1,700;1,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=17">
+  <link rel="stylesheet" href="style.css?v=19">
 </head>
 <body>
 
@@ -152,6 +162,16 @@
       <div class="head head-home" data-view="home">
         <h1 class="title">What can we <br>clean for you?</h1>
         <p class="sub">Pick a service to see pricing.</p>
+      </div>
+      <div class="head" data-view="curb-appeal" hidden>
+        <a class="back" href="#">← All services</a>
+        <h1 class="title">Curb Appeal</h1>
+        <p class="sub">House wash plus driveway and sidewalk, in one visit. Save 15% on the whole job.</p>
+      </div>
+      <div class="head" data-view="backyard-refresh" hidden>
+        <a class="back" href="#">← All services</a>
+        <h1 class="title">Backyard Refresh</h1>
+        <p class="sub">Outdoor kitchen, furniture, and patio or deck, all in one visit. Save 15% on the whole job.</p>
       </div>
       <div class="head" data-view="pressure-washing" hidden>
         <a class="back" href="#">← All services</a>
@@ -190,6 +210,26 @@
 
     <!-- HOME: service tiles -->
     <section class="view" data-view="home">
+      <div class="bundle-tiles">
+        <a class="bundle" href="#curb-appeal">
+          <span class="bundle-tag">Bundle &amp; save</span>
+          <svg class="bundle-art" viewBox="0 0 64 64" aria-hidden="true"><path class="ink" d="M4 30 30 9l26 21-3.2 3.8L30 15.6 7.2 33.8z"/><path class="blue" d="M10 31.5 30 15.6l20 15.9V54a2 2 0 0 1-2 2H12a2 2 0 0 1-2-2z"/><rect class="hub" x="25" y="40" width="10" height="16" rx="1"/><rect class="hub" x="15" y="35" width="7" height="7" rx="1"/><rect class="hub" x="38" y="35" width="7" height="7" rx="1"/><path class="spray" d="M58 10l-5 7M61 18l-6 4"/><circle class="drop" cx="57" cy="27" r="1.6"/><circle class="drop" cx="50" cy="9" r="1.4"/></svg>
+          <span class="bundle-off">15<small>% off</small></span>
+          <span class="tile-name">Curb Appeal</span>
+          <span class="bundle-inc">House wash + driveway &amp; sidewalk</span>
+          <span class="tile-arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="bundle" href="#backyard-refresh">
+          <span class="bundle-tag">Bundle &amp; save</span>
+          <svg class="bundle-art" viewBox="0 0 64 64" aria-hidden="true"><path class="spray" d="M24 13c2.5-2.5-2.5-4.5 0-7M32 13c2.5-2.5-2.5-4.5 0-7M40 13c2.5-2.5-2.5-4.5 0-7"/><rect class="ink" x="26" y="16" width="12" height="3.5" rx="1.75"/><path class="blue" d="M9 33c0-9 10.5-14 23-14s23 5 23 14z"/><rect class="ink" x="6" y="33" width="52" height="6" rx="2"/><path class="post" d="M15 39l-3 15M49 39l3 15M14 47h36"/><circle class="ink" cx="12" cy="55.5" r="3"/><circle class="ink" cx="52" cy="55.5" r="3"/></svg>
+          <span class="bundle-off">15<small>% off</small></span>
+          <span class="tile-name">Backyard Refresh</span>
+          <span class="bundle-inc">Outdoor kitchen + furniture + patio or deck</span>
+          <span class="tile-arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      <h2 class="label services-label">Individual services</h2>
       <div class="tiles">
         <a class="tile" href="#pressure-washing">
           <span class="tile-art" aria-hidden="true">
@@ -291,23 +331,56 @@
         </a>
       </div>
 
-      <section class="bundles" aria-label="Bundles">
-        <h2 class="label">Bundle &amp; save</h2>
-        <div class="deals">
-        <div class="deal">
-          <div class="deal-top"><span class="deal-name">Curb Appeal Package</span><span class="save">15% off</span></div>
-          <p>House wash + driveway &amp; sidewalk, done in one visit.</p>
-          <a class="deal-link" href="sms:+16155124502?&amp;body=Hi%20GL%20Services%21%20I%27m%20interested%20in%20the%20Curb%20Appeal%20Package%20%28house%20wash%20%2B%20driveway%20%26%20sidewalk%29.%20Here%20are%20photos%3A">Text about this bundle →</a>
-        </div>
-        <div class="deal">
-          <div class="deal-top"><span class="deal-name">Backyard Refresh</span><span class="save">15% off</span></div>
-          <p>Outdoor kitchen + outdoor furniture + patio or deck wash, all in one visit.</p>
-          <a class="deal-link" href="sms:+16155124502?&amp;body=Hi%20GL%20Services%21%20I%27m%20interested%20in%20the%20Backyard%20Refresh%20%28outdoor%20kitchen%20%2B%20furniture%20%2B%20patio/deck%20wash%29.%20Here%20are%20photos%3A">Text about this bundle →</a>
-        </div>
-        </div>
-      </section>
-
       <p class="home-note">Locally owned · Serving Franklin, Spring Hill &amp; nearby · Text <a href="sms:+16155124502">615-512-4502</a></p>
+    </section>
+
+    <!-- BUNDLE: curb-appeal -->
+    <section class="view detail" data-view="curb-appeal" hidden>
+      <div class="panel">
+        <p class="big-price">15% off</p>
+        <p class="panel-text">Get your house washed and your driveway &amp; sidewalk pressure washed in the same visit, and save 15% on the total. Text photos of the house and driveway for a quick quote.</p>
+        <ol class="mini-steps">
+          <li>Snap photos</li>
+          <li>Text them over</li>
+          <li>Get your bundle price</li>
+        </ol>
+      </div>
+
+      <h2 class="label">What's included</h2>
+      <ul class="ticks">
+        <li><a href="#house-washing">House washing</a>: siding, trim &amp; soffits</li>
+        <li><a href="#pressure-washing">Pressure washing</a>: driveway &amp; sidewalk</li>
+      </ul>
+
+      <div class="actions">
+        <a class="btn btn-primary btn-lg" href="sms:+16155124502?&amp;body=Hi%20GL%20Services%21%20I%27m%20interested%20in%20the%20Curb%20Appeal%20Package%20%28house%20wash%20%2B%20driveway%20%26%20sidewalk%29.%20Here%20are%20photos%3A">Text for a Quote</a>
+        <a class="btn btn-ghost btn-lg" href="tel:+16155124502">Call</a>
+      </div>
+    </section>
+
+    <!-- BUNDLE: backyard-refresh -->
+    <section class="view detail" data-view="backyard-refresh" hidden>
+      <div class="panel">
+        <p class="big-price">15% off</p>
+        <p class="panel-text">Get your outdoor kitchen, patio furniture, and patio or deck cleaned in the same visit, and save 15% on the total. Text photos of everything, plus anything you don't want touched.</p>
+        <ol class="mini-steps">
+          <li>Snap photos</li>
+          <li>Text them over</li>
+          <li>Get your bundle price</li>
+        </ol>
+      </div>
+
+      <h2 class="label">What's included</h2>
+      <ul class="ticks">
+        <li><a href="#outdoor-kitchens">Outdoor kitchen</a>: grill, countertops, cabinets &amp; sink</li>
+        <li><a href="#outdoor-furniture">Outdoor furniture</a>: frames &amp; cushions</li>
+        <li><a href="#pressure-washing">Pressure washing</a>: patio or deck</li>
+      </ul>
+
+      <div class="actions">
+        <a class="btn btn-primary btn-lg" href="sms:+16155124502?&amp;body=Hi%20GL%20Services%21%20I%27m%20interested%20in%20the%20Backyard%20Refresh%20%28outdoor%20kitchen%20%2B%20furniture%20%2B%20patio/deck%20wash%29.%20Here%20are%20photos%3A">Text for a Quote</a>
+        <a class="btn btn-ghost btn-lg" href="tel:+16155124502">Call</a>
+      </div>
     </section>
 
     <!-- PRESSURE WASHING -->
@@ -335,12 +408,12 @@
         <div class="deal">
           <div class="deal-top"><span class="deal-name">Curb Appeal Package</span><span class="save">15% off</span></div>
           <p>House wash + driveway &amp; sidewalk, done in one visit.</p>
-          <a class="deal-link" href="sms:+16155124502?&amp;body=Hi%20GL%20Services%21%20I%27m%20interested%20in%20the%20Curb%20Appeal%20Package%20%28house%20wash%20%2B%20driveway%20%26%20sidewalk%29.%20Here%20are%20photos%3A">Text about this bundle →</a>
+          <a class="deal-link" href="#curb-appeal">See the bundle →</a>
         </div>
         <div class="deal">
           <div class="deal-top"><span class="deal-name">Backyard Refresh</span><span class="save">15% off</span></div>
           <p>Outdoor kitchen + outdoor furniture + patio or deck wash, all in one visit.</p>
-          <a class="deal-link" href="sms:+16155124502?&amp;body=Hi%20GL%20Services%21%20I%27m%20interested%20in%20the%20Backyard%20Refresh%20%28outdoor%20kitchen%20%2B%20furniture%20%2B%20patio/deck%20wash%29.%20Here%20are%20photos%3A">Text about this bundle →</a>
+          <a class="deal-link" href="#backyard-refresh">See the bundle →</a>
         </div>
         <div class="deal">
           <div class="deal-top"><span class="deal-name">Add Trash Bins</span><span class="save">Save $5+</span></div>
@@ -378,7 +451,7 @@
         <div class="deal">
           <div class="deal-top"><span class="deal-name">Curb Appeal Package</span><span class="save">15% off</span></div>
           <p>House wash + driveway &amp; sidewalk, done in one visit.</p>
-          <a class="deal-link" href="sms:+16155124502?&amp;body=Hi%20GL%20Services%21%20I%27m%20interested%20in%20the%20Curb%20Appeal%20Package%20%28house%20wash%20%2B%20driveway%20%26%20sidewalk%29.%20Here%20are%20photos%3A">Text about this bundle →</a>
+          <a class="deal-link" href="#curb-appeal">See the bundle →</a>
         </div>
       </div>
 
@@ -412,7 +485,7 @@
         <div class="deal">
           <div class="deal-top"><span class="deal-name">Backyard Refresh</span><span class="save">15% off</span></div>
           <p>Outdoor kitchen + outdoor furniture + patio or deck wash, all in one visit.</p>
-          <a class="deal-link" href="sms:+16155124502?&amp;body=Hi%20GL%20Services%21%20I%27m%20interested%20in%20the%20Backyard%20Refresh%20%28outdoor%20kitchen%20%2B%20furniture%20%2B%20patio/deck%20wash%29.%20Here%20are%20photos%3A">Text about this bundle →</a>
+          <a class="deal-link" href="#backyard-refresh">See the bundle →</a>
         </div>
       </div>
 
@@ -446,7 +519,7 @@
         <div class="deal">
           <div class="deal-top"><span class="deal-name">Backyard Refresh</span><span class="save">15% off</span></div>
           <p>Outdoor kitchen + outdoor furniture + patio or deck wash, all in one visit.</p>
-          <a class="deal-link" href="sms:+16155124502?&amp;body=Hi%20GL%20Services%21%20I%27m%20interested%20in%20the%20Backyard%20Refresh%20%28outdoor%20kitchen%20%2B%20furniture%20%2B%20patio/deck%20wash%29.%20Here%20are%20photos%3A">Text about this bundle →</a>
+          <a class="deal-link" href="#backyard-refresh">See the bundle →</a>
         </div>
       </div>
 
@@ -574,12 +647,13 @@
         var my = ++token;
         var back = id === 'home', dir = back ? -1 : 1;
         var service = back ? prev : id;
-        var tileTitle = $('.tile[href="#' + service + '"] .tile-name');
+        var tileTitle = $('main [data-view="home"] a[href="#' + service + '"] .tile-name');
         var pageTitle = $('.head[data-view="' + service + '"] .title');
         var from = back ? pageTitle : tileTitle, to = back ? tileTitle : pageTitle;
 
         // 1. Old page fades/slides out
         var fromRect = from.getBoundingClientRect();
+        var glide = fromRect.width > 0;  // e.g. service page -> bundle page: the home tile isn't visible, so just slide
         var fromSize = parseFloat(getComputedStyle(from).fontSize);
         var h0 = band.offsetHeight;
         var outs = Array.prototype.map.call(document.querySelectorAll('[data-view="' + prev + '"]'), function (el) {
@@ -601,15 +675,17 @@
           anim(band, [{ height: h0 + 'px' }, { height: h1 + 'px' }], { duration: 450, easing: EASE });
 
           // 3. Service title glides from where it was to where it lands (lifted above neighbouring tiles meanwhile)
+          if (glide) {
           to.style.position = 'relative'; to.style.zIndex = '10';
           anim(to, [
             { transformOrigin: '0 0', transform: 'translate(' + (fromRect.left - toRect.left) + 'px,' + (fromRect.top - toRect.top) + 'px) scale(' + s + ')', opacity: .3 },
             { transformOrigin: '0 0', transform: 'none', opacity: 1 }
           ], { duration: 520, easing: EASE }).finished.catch(function () {}).then(function () { to.style.position = to.style.zIndex = ''; });
+          }
 
           // 4. Everything else in the new page slides in
           var head = $('.head[data-view="' + id + '"]'), body = $('main [data-view="' + id + '"]');
-          var parts = Array.prototype.filter.call(head.children, function (c) { return c !== to; }).concat([body]);
+          var parts = Array.prototype.filter.call(head.children, function (c) { return !glide || c !== to; }).concat([body]);
           parts.forEach(function (el) {
             anim(el, [{ opacity: 0, transform: 'translateX(' + (40 * dir) + 'px)' }, { opacity: 1, transform: 'none' }],
               { duration: 460, delay: 40, easing: EASE, fill: 'backwards' });
