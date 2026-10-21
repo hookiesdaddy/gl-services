@@ -138,7 +138,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,600;0,800;1,700;1,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=27">
+  <link rel="stylesheet" href="style.css?v=28">
 </head>
 <body>
 
@@ -735,7 +735,7 @@
       window.addEventListener('hashchange', route);
       route();
       // The CSS fade-in is only for the first load; after that, transition() handles motion
-      setTimeout(function () { document.documentElement.classList.add('ready'); }, 600);
+      setTimeout(function () { document.documentElement.classList.add('ready'); }, 1300);  // long enough for the tile cascade
 
       // Before/after strip: arrow buttons scroll one pair at a time
       var baList = document.querySelector('.ba-list');
